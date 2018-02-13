@@ -1,55 +1,42 @@
 import java.util.Scanner;
 
-
 public class Calcolatrice {
 	
 	public static void main(String[] args) {
-		
-		
 		Scanner in = new Scanner(System.in);
-		String comando = in.nextLine();
-		double valueS = 0.0, newvalue, calc;
+		double S = 0.0;
+		String check = "";
 		
-		while (comando.length() > 0 && comando.charAt(0) != 'E') {
+		while (in.hasNextLine() {
+			String input = in.nextLine();
+			String[] comandi =  input.split(" ");
+			check = comandi[0];
 			
-			char c = comando.charAt(0);
-			String[] lista = comando.split(" ");
-			if (lista.length == 2 || lista[0].length() == 1) {
+			
+				Double operando = Double.parseDouble(comandi[1]);
 				
-			
-				switch (c) {
-					case 'S':  	valueS = (double) Integer.parseInt(lista[1]);
-								System.out.println("= " + valueS);
-								break;
-					case '*':  	newvalue = (double) Integer.parseInt(lista[1]);
-								calc = valueS * newvalue;
-								valueS = calc;
-								System.out.println("= " + calc);						
-								break;
-					case '/':  	newvalue = (double) Integer.parseInt(lista[1]);
-								calc = valueS / newvalue;
-								valueS = calc;
-								System.out.println("= " + calc);						
-								break;
-					case '+':  	newvalue = (double) Integer.parseInt(lista[1]);
-								calc = valueS + newvalue;
-								valueS = calc;
-								System.out.println("= " + calc);							
-								break;
-					case '-':  	newvalue = (double) Integer.parseInt(lista[1]);
-								calc = valueS - newvalue;
-								valueS = calc;
-								System.out.println("= " + calc);							
-								break;
+				switch (comandi[0].charAt(0)) {
+					case '+': S = S + operando;
+					break;
+					case '-': S = S - operando;
+					break;
+					case '*': S = S * operando;
+					break;
+					case '/': S = S / operando;
+					break;
+					case 'E': return;
+					break;
+					default:
+					
 				}
-			}
+				
+				System.out.println("= "+ S);
+		} 
 			
-			comando = in.nextLine();
-			
-		}
-		
-		return;
+				
 		
 	}
-
+	
+	
+	
 }

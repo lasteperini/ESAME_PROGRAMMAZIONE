@@ -1,61 +1,60 @@
-import java.util.Scanner;
-import java.util.ArrayList;
 import java.io.File;
+import java.util.Scanner;
+import java.util.Collections;
+import java.util.ArrayList;
 import java.io.FileNotFoundException;
-
 
 public class TrovaRigheColonneTutteZero {
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> arrayRighe = new ArrayList<Integer>(), arrayColonne = new ArrayList<Integer>();
-		boolean init=false;
-		int contaRighe = 0;
-		String linea;
 		
+		ArrayList<Integer> righe = new ArrayList<Integer>();
+		ArrayList<Integer> colonneZero = new ArrayList<Integer>();
+		ArrayList<Integer> colonneUno = new ArrayList<Integer>();
+	
 		File file = new File(args[0]);
-		try {
-			Scanner scanner = new Scanner(file);
-			while (scanner.hasNextLine()) {
+		int counter = 1;
+		int lunghezza =0;
 		
-				linea = scanner.nextLine();
-				contaRighe++;
-				if (linea.indexOf("1") == -1) 
-					arrayRighe.add(contaRighe);
-				
+		try{
+			Scanner in = new Scanner(file);
 					
-				//valuto che le colonne inizialmente siano tutte a true
-				// se trovo un elemento 1 almeno una volta la metto a false
-				
-				//inizializzazione
-				if (!init) {
-					for (int i = 0; i < linea.length();i++) {
-						arrayColonne.add(i+1);
+			while (in.hasNextLine()) {
+				String riga = in.nextLine();
+				lunghezza = riga.length();
+				if (riga.indexOf("1") < 0 && riga.indexOf("0") > 0) 
+					righe.add(counter);
+				for (int i = 0; i < riga.length(); i++) {
+					if (riga.charAt(i) == '1' ) {
+						colonneUno.add(i);
 					}
-					init = true;
-				}
-				//valuto ogni riga, elemento per elemento
-				for (int i = 0; i < linea.length();i++) {
-					if (linea.charAt(i) != '0' && arrayColonne.contains(i+1)) {
-							int index = arrayColonne.indexOf(i+1);
-							arrayColonne.remove(index);
-							
-					}
+					
 				}
 					
+				counter++;
+				
 			}
+			
+			Collections.sort(righe);
+			
+			System.out.println("righe tutte zero");
+			for (Integer elem: righe)
+				System.out.println(elem);
 				
-			System.out.println("righe tutte zero:");
-			for (int elem : arrayRighe) 
-				System.out.println(elem);
+			System.out.println("colonne tutte zero");
+			for (int i =0; i< lunghezza;i++) 
+				if (!colonneUno.contains(i)) 
+					System.out.println(i+1);
+					
 			
-			System.out.println("colonne tutte zero:");
-			for (int elem : arrayColonne) 
-				System.out.println(elem);
-			
-			
-		} catch (FileNotFoundException e) {
+		
+		} catch (	FileNotFoundException e) {
 			System.out.println("file non esistente");
 		}
+			
+			
+			
+		
+		
 	}
 }
-	
