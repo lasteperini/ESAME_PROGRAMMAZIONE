@@ -24,7 +24,7 @@ public class FunPlot {
 			while (pos < max) {
 				double y = operation(func,pos);
 				System.out.printf("%.1f",pos);
-				
+				//controllo if (y> -40 && y < 40 ) aggiunto post esame
 				if (y> -40 && y < 40 ) {
 					for (int i = -40 ; i < (int) y; i++) {
 						System.out.printf(" ");
