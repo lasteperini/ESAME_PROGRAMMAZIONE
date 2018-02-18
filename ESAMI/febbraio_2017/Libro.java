@@ -1,19 +1,25 @@
+import java.util.ArrayList;
+
 public class Libro {
 	private String titolo;
-	private String[] autori = new String[30];
+	private autori[];
 	private int isbn;
 	private boolean prestabile;
 	
 	
 	public Libro (String titolo, String[] autori, boolean prestabile) {
 		this.titolo = titolo;
-		this.autori = autori;
+		this.autori = new String[autori.length];
+		for (int i = 0;i<autori.length;i++) {
+			this.autori[i] = autori[i];
+		}
 		this.prestabile = prestabile;
 		this.isbn = this.hashCode();
 	}
 
 	public Libro (String titolo, String autore, boolean prestabile) {
 		this.titolo = titolo;
+		this.autori = new String[1];
 		this.autori[0] = autore;
 		this.prestabile = prestabile;
 		this.isbn = this.hashCode();
