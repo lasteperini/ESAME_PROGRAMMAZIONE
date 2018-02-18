@@ -1,24 +1,31 @@
-import java.util.ArrayList;
-
 public class Prodotto {
 	
-	private String nome = null;
-	private Reparto reparto = null;
-	private String id = null;
-	private double quantita = 0.0;
-	private double prezzo = 0.0;
-	private UnitaDiMisura mis = null;
+	private String nome;
+	private Reparto reparto;
+	private String id;
+	private double quantita;
+	private double prezzo;
+	private UnitaDiMisura mis;
 	
 	// costruttore	
-	public Prodotto (String n,Reparto r,String i,double q,double p,UnitaDiMisura m) {
-		this.nome = n;
-		this.reparto = r;
-		this.id = i;
-		this.quantita = q;
-		this.prezzo = p;
-		this.mis = m;
+	public Prodotto (String nome,Reparto r,String id,double quantita,double prezzo,UnitaDiMisura m) {
+		this.nome = nome;
+		this.reparto = new Reparto(r);
+		this.id = id;
+		this.quantita = quantita;
+		this.prezzo = prezzo;
+		this.mis = new UnitaDiMisura(m);
 	}
 	
+	public Prodotto (Prodotto p) {
+		this.nome = p.nome;
+		this.reparto = p.reparto;
+		this.id = p.id;
+		this.quantita = p.quantita;
+		this.prezzo = p.prezzo;
+		this.mis = p.mis;
+	}
+
 	public double prezzo () {
 		return this.prezzo;
 	}
@@ -29,8 +36,9 @@ public class Prodotto {
 		return prezzoUnitario;	
 	}
 	
-	
-	
-	
+	@Override 
+	public String toString () {
+		return this.nome;
+	}
 	
 }

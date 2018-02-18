@@ -1,15 +1,14 @@
-
 public class Offerta {
-	private String nomeOfferta = null;
-	private Prodotto prodotto = null;
-	double percSconto = 0.0;
-	int numMinimo = 1;
-	boolean soloCartaFedelta = false;
+	private String nomeOfferta;
+	private Prodotto prodotto;
+	double percSconto;
+	int numMinimo;
+	boolean soloCartaFedelta;
 	
 	// costruttore	
 	public Offerta (String n,Prodotto pr,double ps,int min,boolean cf) {
 		this.nomeOfferta = n;
-		this.prodotto = pr;
+		this.prodotto = new Prodotto(pr);
 		this.percSconto = ps;
 		this.numMinimo = min;
 		this.soloCartaFedelta = cf;
@@ -34,6 +33,11 @@ public class Offerta {
 		
 		
 		return prezzoConOfferta;
+	}
+	
+	@Override 
+	public String toString() {
+		return "["+this.nomeOfferta+","+this.prodotto.toString()+","+this.percSconto+"%, qta min:"+this.numMinimo+", carta fedeltà "+this.soloCartaFedelta+"]";
 	}
 	
 }

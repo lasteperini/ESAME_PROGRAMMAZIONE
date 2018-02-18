@@ -9,6 +9,11 @@ public class Reparto {
 		this.nominativoResponsabile = nominativo;
 	}
 	
+	public Reparto (Reparto r) {
+		this.nomeReparto = r.nomeReparto;
+		this.nominativoResponsabile = r.nominativoResponsabile;
+	}
+
 	// metodo toString		
 	public String toString () {
 		return this.nomeReparto;
