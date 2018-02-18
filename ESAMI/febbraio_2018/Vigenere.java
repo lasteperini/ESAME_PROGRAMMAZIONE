@@ -22,6 +22,7 @@ public class Vigenere {
 						counter =0;
 					}
 					if (Character.isLetter(line.charAt(i))) {
+						// questo calcolo è stato aggiunto post esame
 						// cRot deve valere: valore di linea.charAt(i) + valore di verme.charAt(i)
 						// ma essere nel range 65-90
 						// divido entrambi i valori per %65
