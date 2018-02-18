@@ -8,25 +8,28 @@ public class Risorsa {
 		this.prezzo = prezzo;
 	}
 	
-	public Risorsa (String nome) {
-		this.nome = nome;
-		this.prezzo = 0;
-	}
 	
 	@Override	
 	public String toString () {
-		return this.nome;
+		return "[risorsa: "+this.nome+", prezzo: "+this.prezzo+"]";
 	}
 	
 	@Override
 	public boolean equals (Object obj) {
-		if (obj == null) return false;
-		if (!(obj instanceof Risorsa)) return false;
+		if (obj == null) 
+			return false;
+		if ((obj instanceof Risorsa)) {
 		
-		Risorsa ris = (Risorsa) obj;
-		
-		if (this.nome.equals(ris.nome)) return true;
-		else return false;
+			Risorsa other = (Risorsa) obj;
+			
+			if (this.nome.equals(other.nome)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 	
 	@Override 
@@ -39,8 +42,8 @@ public class Risorsa {
 		return this.prezzo;
 	}
 	
-	public void setPrezzo (int nuovoPrezzo) {
-		this.prezzo = nuovoPrezzo;
+	public String getNome () {
+		return this.nome;
 	}
 	
 		

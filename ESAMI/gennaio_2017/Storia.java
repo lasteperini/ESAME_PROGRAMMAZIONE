@@ -27,7 +27,7 @@ public class Storia {
 	
 	public Civilta piuRicca () {
 		int max = Integer.MIN_VALUE;
-		Civilta candidata = this.arrayCivilta.get(0);
+		Civilta candidata = null;
 		for (Civilta elem: this.arrayCivilta) {
 			if (elem.getTesoro() > max) {
 				max = elem.getTesoro();
@@ -39,9 +39,8 @@ public class Storia {
 	
 	
 	public Civilta piuPovera () {
-		int min = Integer.MAX_VALUE;
-		
-		Civilta candidata = this.arrayCivilta.get(0);
+		int min = Integer.MAX_VALUE;		
+		Civilta candidata = null;
 		for (Civilta elem: this.arrayCivilta) {
 			if (elem.getTesoro() < min) {
 				min = elem.getTesoro();

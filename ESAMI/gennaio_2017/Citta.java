@@ -10,18 +10,26 @@ public class Citta {
 	
 	@Override 
 	public String toString () {
-		return this.nome;
+		return "[citta: "+this.nome+", risorsa: "+this.risorsa.toString()+"]";
 	}
 	
 	@Override
 	public boolean equals (Object obj) {
-		if (obj == null) return false;
-		if (!(obj instanceof Citta)) return false;
+		if (obj == null) {
+			return false;
+		}
+		if ((obj instanceof Citta)) {
 		
-		Citta citta = (Citta) obj;
+			Citta other = (Citta) obj;
 		
-		if (this.nome.equals(citta.nome)) return true;
-		else return false;
+			if (this.nome.equals(other.nome)) {
+				return true;
+			} else {
+			return false;
+			}
+		} else {
+			return false;
+		}
 	}
 	
 	@Override 
@@ -31,7 +39,7 @@ public class Citta {
 	}
 	
 	public Risorsa produci () {
-		return this.risorsa;
+		return new Risorsa(this.risorsa.getNome(),this.risorsa.getPrezzo());
 	}
 	
 }
