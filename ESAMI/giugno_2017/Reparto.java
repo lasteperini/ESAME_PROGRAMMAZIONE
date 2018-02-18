@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Reparto {
 	
 	private String nomeReparto = null;
@@ -21,26 +19,25 @@ public class Reparto {
 		if (obj == null) {
 			return false;
 		}
-		if (!Reparto.class.isAssignableFrom(obj.getClass())) {
-			return false;
-		}
-		final Reparto other = (Reparto) obj;
-		if ((this.nomeReparto == null) ? (other.nomeReparto != null) : !this.nomeReparto.equals(other.nomeReparto)) {
+		if (obj instanceof Reparto ) {
+			Reparto other = (Reparto) obj;
+			if (this.nomeReparto.equals(other.nomeReparto)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
 			return false;
 		}
 		
-		return true;
 	}
 	
 	@Override
 	public int hashCode() {
-		int hash = 3;
-		hash = 53 * hash + (this.nomeReparto != null ? this.nomeReparto.hashCode() : 0);
+		int hash = 53 * this.nomeReparto.hashCode();
 		return hash;
 	}
 
 
 		
 }
-	
-
