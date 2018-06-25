@@ -167,6 +167,9 @@ public class Stazione {
 		Bicicletta bici = u.bicicletta();
 		if (bici != null && biciclette[i] == null) {
 			this.biciclette[i] = bici;
+			// aggiunto post esame
+			bici.restituisci();
+			//
 			u.restituisci();
 		} else {
 			throw new IllegalStateException();
@@ -190,6 +193,10 @@ public class Stazione {
 		Bicicletta bici = this.biciclette[i];
 		 
 		if (biciclette[i] != null) {
+			// aggiunto post esame
+			bici.daiInUso()
+			//
+								
 			u.prendiInUso(bici);
 			this.biciclette[i] = null;
 		} else {
